@@ -1,0 +1,13 @@
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  place-content: center;
+  gap: 1rem;
+}
+
+.card {
+  width: 200px;
+  aspect-ratio: 4 / 5;
+  background-color: aqua;
+  text-align: center;
+}

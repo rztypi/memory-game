@@ -1,4 +1,5 @@
-import "./App.css";
+import Game from "./components/Game.jsx";
+import "./styles/App.css";
 
 const App = () => {
   return (
@@ -8,7 +9,11 @@ const App = () => {
           <i className="bi bi-sd-card-fill"></i> Memory Card
         </h1>
       </header>
-      <main></main>
+      <main className="main">
+        <div className="main__container">
+          <Game></Game>
+        </div>
+      </main>
       <footer className="footer">
         <a href="https://github.com/rztypi" className="gh-link">
           <i className="bi bi-github"></i> rztypi
