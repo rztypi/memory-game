@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { shuffle } from "../utils.js";
 import { fetchAndSetData } from "../api.js";
+import { playAnimation } from "../dom.js";
 import "../styles/Game.css";
 
 const Card = ({ obj, onClick }) => {
@@ -49,14 +50,25 @@ const Game = () => {
     selectedCards.current = [];
   };
 
+  const endGame = (result) => {
+    playAnimation(`${result}-animation`);
+    resetGame();
+  };
+
+  const playGame = (value) => {
+    setScore(score + 1);
+    setBestScore(Math.max(score + 1, bestScore));
+    selectedCards.current.push(value);
+  };
+
   const handleCardClick = (value) => {
     if (selectedCards.current.includes(value)) {
-      resetGame();
+      endGame("lose");
     } else {
-      const newScore = score + 1;
-      setScore(newScore);
-      setBestScore(Math.max(newScore, bestScore));
-      selectedCards.current.push(value);
+      playGame(value);
+      if (score + 1 === cardCount[difficulty]) {
+        endGame("win");
+      }
     }
   };
 

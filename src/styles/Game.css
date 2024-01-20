@@ -1,6 +1,7 @@
 .game__header {
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .game__scores {
@@ -17,11 +18,69 @@
 .card {
   width: 200px;
   aspect-ratio: 4 / 5;
+  box-shadow: 0.125rem 0.125rem 0.5rem lightgray;
   text-align: center;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.card:hover {
+  transform: scale(1.025);
 }
 
 .card__img {
   object-fit: cover;
   width: 100%;
   height: 100%;
+}
+
+/* Animations */
+.header__title.lose-animation {
+  animation: shakeX 0.5s ease-in-out;
+}
+
+@keyframes shakeX {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-0.5rem);
+  }
+  40% {
+    transform: translateX(0.75rem);
+  }
+  60% {
+    transform: translateX(-0.75rem);
+  }
+  80% {
+    transform: translateX(0.5rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.header__title.win-animation {
+  animation: scaleBounce 0.5s ease-in-out;
+}
+
+@keyframes scaleBounce {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(0.96);
+  }
+  40% {
+    transform: scale(1.08);
+  }
+  60% {
+    transform: scale(0.92);
+  }
+  80% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
