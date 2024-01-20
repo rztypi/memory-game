@@ -12,10 +12,20 @@ const Card = ({ obj, onClick }) => {
 };
 
 const Game = () => {
+  const cardCount = {
+    easy: 5,
+    medium: 10,
+    hard: 20,
+  };
+
   const [apiData, setApiData] = useState(null);
+
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const indices = useRef([...new Array(10).keys()]);
+
+  const [difficulty, setDifficulty] = useState("easy");
+  const indices = useRef([...new Array(cardCount[difficulty]).keys()]);
+
   const selectedCards = useRef([]);
 
   useEffect(() => {
@@ -33,35 +43,62 @@ const Game = () => {
   }
 
   const resetGame = () => {
-    selectedCards.current = [];
+    shuffle(apiData);
+    setApiData([...apiData]);
     setScore(0);
+    selectedCards.current = [];
   };
 
-  const handleClickCard = (value) => {
+  const handleCardClick = (value) => {
     if (selectedCards.current.includes(value)) {
       resetGame();
     } else {
-      selectedCards.current.push(value);
       const newScore = score + 1;
       setScore(newScore);
-      if (newScore > bestScore) {
-        setBestScore(newScore);
-      }
+      setBestScore(Math.max(newScore, bestScore));
+      selectedCards.current.push(value);
     }
+  };
+
+  const handleDiffBtnClick = (value) => {
+    if (value === difficulty) {
+      return;
+    }
+    setDifficulty(value);
+    indices.current = [...new Array(cardCount[value]).keys()];
+    resetGame();
   };
 
   shuffle(indices.current);
 
   return (
     <div className="game">
-      <p className="game__score">Score: {score}</p>
-      <p className="game__best-score">Best Score: {bestScore}</p>
+      <div className="game__header">
+        <div className="game__scores">
+          <p className="game__score">Score: {score}</p>
+          <p className="game__best-score">Best Score: {bestScore}</p>
+        </div>
+        <div className="game__difficulty-btns">
+          {Object.keys(cardCount).map((difficultyOption) => (
+            <button
+              key={difficultyOption}
+              onClick={() => handleDiffBtnClick(difficultyOption)}
+              type="button"
+            >
+              {difficultyOption}
+            </button>
+          ))}
+        </div>
+        <button onClick={() => resetGame()} type="button">
+          <i className="bi bi-arrow-clockwise"></i> Reset
+        </button>
+      </div>
       <div className="card-grid">
         {indices.current.map((index) => (
           <Card
             key={apiData[index].id}
             obj={apiData[index]}
-            onClick={() => handleClickCard(index)}
+            onClick={() => handleCardClick(index)}
           ></Card>
         ))}
       </div>
