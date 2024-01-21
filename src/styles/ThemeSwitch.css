@@ -1,0 +1,18 @@
+.theme-switch {
+  margin: 0;
+  padding: 0.25rem;
+  background-color: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.theme-switch:hover {
+  opacity: 0.8;
+}
+
+.theme-switch:active {
+  opacity: 0.6;
+}

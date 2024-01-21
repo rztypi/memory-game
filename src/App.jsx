@@ -1,13 +1,22 @@
 import Game from "./components/Game.jsx";
+import ThemeSwitch from "./components/ThemeSwitch.jsx";
+import { initDataTheme } from "./theme.js";
 import "./styles/App.css";
+
+if (typeof window !== "undefined") {
+  initDataTheme();
+}
 
 const App = () => {
   return (
     <>
       <header className="header">
-        <h1 className="header__title">
-          <i className="bi bi-sd-card-fill"></i> Memory Card
-        </h1>
+        <div className="header__container">
+          <h1 className="header__title">
+            <i className="bi bi-sd-card-fill"></i> Memory Card
+          </h1>
+          <ThemeSwitch className="header__theme-switch"></ThemeSwitch>
+        </div>
       </header>
       <main className="main">
         <div className="main__container">
