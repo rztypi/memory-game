@@ -10,6 +10,8 @@
 
 .header {
   padding: 0.5rem 0;
+  background-color: var(--secondary-color);
+  box-shadow: var(--shadow-1);
   text-align: center;
 }
 
@@ -31,6 +33,7 @@
 
 .footer {
   padding: 0.5rem 0;
+  background-color: var(--secondary-color);
   text-align: center;
 }
 

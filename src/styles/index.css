@@ -4,3 +4,42 @@
 :root {
   font-family: "Poppins", sans-serif;
 }
+
+:root {
+  color-scheme: light;
+  --primary-color: #f8f9fa;
+  --secondary-color: #f1f3f5;
+  --tertiary-color: #e9ecef;
+  --font-color: #030507;
+  --red: #c92a2a;
+  --green: #2b8a3e;
+  --shadow-color: 220 3% 15%;
+  --shadow-strength: 1%;
+  --shadow-1: 0 3px 5px -2px hsl(var(--shadow-color) /
+          calc(var(--shadow-strength) + 3%)),
+    0 7px 14px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%));
+  --shadow-2: 0 -2px 5px 0 hsl(var(--shadow-color) /
+          calc(var(--shadow-strength) + 2%)),
+    0 1px 1px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+    0 2px 2px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+    0 5px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)),
+    0 9px 9px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)),
+    0 16px 16px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --primary-color: #343a40;
+  --secondary-color: #212529;
+  --tertiary-color: #16191d;
+  --font-color: #f8f9fa;
+  --red: #b02525;
+  --green: #237032;
+  --shadow-color: 220 40% 2%;
+  --shadow-strength: 25%;
+}
+
+body {
+  background-color: var(--tertiary-color);
+  color: var(--font-color);
+}

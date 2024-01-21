@@ -1,11 +1,32 @@
 .game__header {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .game__scores {
+  display: flex;
+  gap: 1rem;
   margin-right: auto;
+}
+
+.game__btns {
+  display: flex;
+  gap: 1rem;
+}
+
+.game__difficulty-btns {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.game__difficulty-btn,
+.game__reset-btn {
+  padding: 0.125rem 0.5rem;
+  background-color: var(--primary-color);
+  border: none;
+  box-shadow: var(--shadow-1);
+  cursor: pointer;
 }
 
 .card-grid {
@@ -16,15 +37,16 @@
 }
 
 .card {
-  width: 200px;
+  width: 12rem;
   aspect-ratio: 4 / 5;
-  box-shadow: 0.125rem 0.125rem 0.5rem lightgray;
+  box-shadow: var(--shadow-2);
   text-align: center;
   cursor: pointer;
   transition: transform 0.1s;
 }
 
-.card:hover {
+.card:hover,
+.card:focus {
   transform: scale(1.025);
 }
 
@@ -34,9 +56,23 @@
   height: 100%;
 }
 
+@media (width < 768px) {
+  .game__header {
+    flex-direction: column;
+  }
+
+  .game__scores {
+    margin: initial;
+  }
+}
+
 /* Animations */
 .header__title.lose-animation {
-  animation: shakeX 0.5s ease-in-out;
+  animation: shakeX 0.5s ease-in-out, redText 0.5s ease-in-out;
+}
+
+.header__title.win-animation {
+  animation: scaleBounce 0.5s ease-in-out, greenText 0.5s ease-in-out;
 }
 
 @keyframes shakeX {
@@ -60,10 +96,6 @@
   }
 }
 
-.header__title.win-animation {
-  animation: scaleBounce 0.5s ease-in-out;
-}
-
 @keyframes scaleBounce {
   0% {
     transform: scale(1);
@@ -82,5 +114,41 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes redText {
+  0% {
+    color: var(--font-color);
+  }
+
+  20% {
+    color: var(--red);
+  }
+
+  80% {
+    color: var(--red);
+  }
+
+  100% {
+    color: var(--font-color);
+  }
+}
+
+@keyframes greenText {
+  0% {
+    color: var(--font-color);
+  }
+
+  20% {
+    color: var(--green);
+  }
+
+  80% {
+    color: var(--green);
+  }
+
+  100% {
+    color: var(--font-color);
   }
 }

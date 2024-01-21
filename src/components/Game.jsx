@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { shuffle } from "../utils.js";
+import { shuffle, capitalize } from "../utils.js";
 import { fetchAndSetData } from "../api.js";
 import { playAnimation } from "../dom.js";
 import "../styles/Game.css";
@@ -90,20 +90,27 @@ const Game = () => {
           <p className="game__score">Score: {score}</p>
           <p className="game__best-score">Best Score: {bestScore}</p>
         </div>
-        <div className="game__difficulty-btns">
-          {Object.keys(cardCount).map((difficultyOption) => (
-            <button
-              key={difficultyOption}
-              onClick={() => handleDiffBtnClick(difficultyOption)}
-              type="button"
-            >
-              {difficultyOption}
-            </button>
-          ))}
+        <div className="game__btns">
+          <div className="game__difficulty-btns">
+            {Object.keys(cardCount).map((difficultyOption) => (
+              <button
+                className="game__difficulty-btn"
+                key={difficultyOption}
+                onClick={() => handleDiffBtnClick(difficultyOption)}
+                type="button"
+              >
+                {capitalize(difficultyOption)}
+              </button>
+            ))}
+          </div>
+          <button
+            className="game__reset-btn"
+            onClick={() => resetGame()}
+            type="button"
+          >
+            <i className="bi bi-arrow-clockwise"></i> Reset
+          </button>
         </div>
-        <button onClick={() => resetGame()} type="button">
-          <i className="bi bi-arrow-clockwise"></i> Reset
-        </button>
       </div>
       <div className="card-grid">
         {indices.current.map((index) => (
