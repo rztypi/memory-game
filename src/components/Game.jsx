@@ -33,9 +33,9 @@ const Card = ({ obj, value, selectCard }) => {
 
 const Game = () => {
   const cardCount = {
-    easy: 5,
-    medium: 10,
-    hard: 20,
+    easy: 6,
+    medium: 12,
+    hard: 18,
   };
 
   const [apiData, setApiData] = useState(null);
@@ -44,8 +44,8 @@ const Game = () => {
   const [bestScore, setBestScore] = useState(0);
 
   const [difficulty, setDifficulty] = useState("easy");
-  const indices = useRef([...new Array(cardCount[difficulty]).keys()]);
 
+  const indices = useRef([...new Array(cardCount[difficulty]).keys()]);
   const selectedCards = useRef([]);
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const Game = () => {
   };
 
   const endGame = (result) => {
-    playEndGameAnimation(`${result}-animation`);
+    playEndGameAnimation(result);
     resetGame();
   };
 

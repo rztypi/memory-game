@@ -50,6 +50,7 @@
   flex-wrap: wrap;
   place-content: center;
   gap: 1em;
+  user-select: none;
 }
 
 .card {
