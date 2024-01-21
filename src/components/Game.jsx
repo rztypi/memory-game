@@ -4,9 +4,25 @@ import { fetchAndSetData } from "../api.js";
 import { playEndGameAnimation, playResetAnimation } from "../dom.js";
 import "../styles/Game.css";
 
-const Card = ({ obj, onClick }) => {
+const Card = ({ obj, selectCard }) => {
+  const handleClick = (event) => {
+    event.currentTarget.blur();
+    selectCard();
+  };
+  const handleKeyUp = (event) => {
+    if (event.key === "Enter") {
+      event.currentTarget.blur();
+      selectCard();
+    }
+  };
+
   return (
-    <div className="card" onClick={onClick}>
+    <div
+      className="card"
+      onClick={handleClick}
+      onKeyUp={handleKeyUp}
+      tabIndex="0"
+    >
       <img src={obj.url} alt={obj.name} className="card__img" />
       <div className="card__name">{obj.name}</div>
     </div>
@@ -63,7 +79,7 @@ const Game = () => {
     selectedCards.current.push(value);
   };
 
-  const handleCardClick = (value) => {
+  const selectCard = (value) => {
     if (selectedCards.current.includes(value)) {
       endGame("lose");
     } else {
@@ -119,7 +135,7 @@ const Game = () => {
           <Card
             key={apiData[index].id}
             obj={apiData[index]}
-            onClick={() => handleCardClick(index)}
+            selectCard={() => selectCard(index)}
           ></Card>
         ))}
       </div>
