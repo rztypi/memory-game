@@ -1,28 +1,28 @@
 .game__header {
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2em;
 }
 
 .game__scores {
   display: flex;
-  gap: 1rem;
+  gap: 1em;
   margin-right: auto;
 }
 
 .game__btns {
   display: flex;
-  gap: 1rem;
+  gap: 1em;
 }
 
 .game__difficulty-btns {
   display: flex;
-  gap: 0.25rem;
+  gap: 0.25em;
 }
 
 .game__difficulty-btn,
 .game__reset-btn {
-  padding: 0.125rem 0.5rem;
+  padding: 0.125em 0.5em;
   background-color: var(--primary-color);
   border: none;
   box-shadow: var(--shadow-1);
@@ -39,11 +39,11 @@
   display: flex;
   flex-wrap: wrap;
   place-content: center;
-  gap: 1rem;
+  gap: 1em;
 }
 
 .card {
-  width: 12rem;
+  width: 12em;
   aspect-ratio: 4 / 5;
   box-shadow: var(--shadow-2);
   text-align: center;
@@ -90,16 +90,16 @@ i.reset-animation::before {
     transform: translateX(0);
   }
   20% {
-    transform: translateX(-0.5rem);
+    transform: translateX(-0.5em);
   }
   40% {
-    transform: translateX(0.75rem);
+    transform: translateX(0.75em);
   }
   60% {
-    transform: translateX(-0.75rem);
+    transform: translateX(-0.75em);
   }
   80% {
-    transform: translateX(0.5rem);
+    transform: translateX(0.5em);
   }
   100% {
     transform: translateX(0);

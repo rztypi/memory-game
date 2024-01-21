@@ -42,4 +42,11 @@
 body {
   background-color: var(--tertiary-color);
   color: var(--font-color);
+  font-size: 100%;
+}
+
+@media (width < 576px) {
+  body {
+    font-size: 90%;
+  }
 }
