@@ -4,23 +4,25 @@ import { fetchAndSetData } from "../api.js";
 import { playEndGameAnimation, playResetAnimation } from "../dom.js";
 import "../styles/Game.css";
 
-const Card = ({ obj, selectCard }) => {
+const Card = ({ obj, value, selectCard }) => {
   const handleClick = (event) => {
-    event.currentTarget.blur();
-    selectCard();
-  };
-  const handleKeyUp = (event) => {
-    if (event.key === "Enter") {
-      event.currentTarget.blur();
-      selectCard();
+    if (
+      event.type === "keydown" &&
+      event.key !== "Enter" &&
+      event.key !== "Spacebar" &&
+      event.key !== " "
+    ) {
+      return;
     }
+    event.currentTarget.blur();
+    selectCard(value);
   };
 
   return (
     <div
       className="card"
       onClick={handleClick}
-      onKeyUp={handleKeyUp}
+      onKeyDown={handleClick}
       tabIndex="0"
     >
       <img src={obj.url} alt={obj.name} className="card__img" />
@@ -134,8 +136,9 @@ const Game = () => {
         {indices.current.map((index) => (
           <Card
             key={apiData[index].id}
+            value={index}
             obj={apiData[index]}
-            selectCard={() => selectCard(index)}
+            selectCard={selectCard}
           ></Card>
         ))}
       </div>
