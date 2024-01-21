@@ -29,6 +29,12 @@
   cursor: pointer;
 }
 
+.game__reset-btn {
+  i {
+    display: inline-block;
+  }
+}
+
 .card-grid {
   display: flex;
   flex-wrap: wrap;
@@ -73,6 +79,10 @@
 
 .header__title.win-animation {
   animation: scaleBounce 0.5s ease-in-out, greenText 0.5s ease-in-out;
+}
+
+i.reset-animation::before {
+  animation: rotate360 0.5s;
 }
 
 @keyframes shakeX {
@@ -150,5 +160,14 @@
 
   100% {
     color: var(--font-color);
+  }
+}
+
+@keyframes rotate360 {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(1turn);
   }
 }

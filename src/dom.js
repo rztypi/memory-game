@@ -1,19 +1,25 @@
-const playAnimation = (animationClass) => {
-  const header = document.querySelector(".header__title");
-  if (header.classList.contains(animationClass)) {
+const playAnimation = (element, className) => {
+  if (element.classList.contains(className)) {
     return;
   }
-  header.classList.add(animationClass);
-  header.addEventListener(
+  element.classList.add(className);
+  element.addEventListener(
     "animationend",
     () => {
-      console.log("done");
-      header.classList.remove(animationClass);
+      element.classList.remove(className);
     },
-    {
-      once: true,
-    }
+    { once: true }
   );
 };
 
-export { playAnimation };
+const playEndGameAnimation = (statusClass) => {
+  const header = document.querySelector(".header__title");
+  playAnimation(header, statusClass);
+};
+
+const playResetAnimation = () => {
+  const icon = document.querySelector(".game__reset-btn").querySelector("i");
+  playAnimation(icon, "reset-animation");
+};
+
+export { playEndGameAnimation, playResetAnimation };

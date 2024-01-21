@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { shuffle, capitalize } from "../utils.js";
 import { fetchAndSetData } from "../api.js";
-import { playAnimation } from "../dom.js";
+import { playEndGameAnimation, playResetAnimation } from "../dom.js";
 import "../styles/Game.css";
 
 const Card = ({ obj, onClick }) => {
@@ -44,6 +44,7 @@ const Game = () => {
   }
 
   const resetGame = () => {
+    playResetAnimation();
     shuffle(apiData);
     setApiData([...apiData]);
     setScore(0);
@@ -51,7 +52,7 @@ const Game = () => {
   };
 
   const endGame = (result) => {
-    playAnimation(`${result}-animation`);
+    playEndGameAnimation(`${result}-animation`);
     resetGame();
   };
 
