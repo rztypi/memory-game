@@ -24,6 +24,33 @@
 
 .header__title {
   display: inline-block;
+  cursor: default;
+}
+
+.header__title-span {
+  display: inline-block;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.header__title-span--o,
+.header__title-span--e {
+  width: 0.65em;
+}
+
+.header__title-span--e {
+  display: none;
+}
+
+.header__title:hover {
+  .header__title-span--e {
+    display: inline-block;
+  }
+  .header__title-span--o {
+    display: none;
+  }
+  .header__title-span--ry-Game {
+    opacity: 0.1;
+  }
 }
 
 .header__theme-switch {
