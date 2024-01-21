@@ -13,6 +13,14 @@
 .game__btns {
   display: flex;
   gap: 1em;
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+  button:active {
+    opacity: 0.6;
+  }
 }
 
 .game__difficulty-btns {
@@ -27,6 +35,8 @@
   border: none;
   box-shadow: var(--shadow-1);
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.2s;
 }
 
 .game__reset-btn {
@@ -79,6 +89,7 @@
   top: 50%;
   left: 50%;
   font-size: 1.2em;
+  font-weight: bold;
   transform: translate(-50%, -50%);
 }
 
