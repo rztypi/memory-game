@@ -8,6 +8,7 @@ const Card = ({ obj, onClick }) => {
   return (
     <div className="card" onClick={onClick}>
       <img src={obj.url} alt={obj.name} className="card__img" />
+      <div className="card__name">{obj.name}</div>
     </div>
   );
 };
