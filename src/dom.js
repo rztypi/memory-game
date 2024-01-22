@@ -12,9 +12,9 @@ const playAnimation = (element, className) => {
   );
 };
 
-const playEndGameAnimation = (status) => {
+const playEndGameAnimation = (result) => {
   const header = document.querySelector(".header__title");
-  playAnimation(header, `${status}-animation`);
+  playAnimation(header, `${result}-animation`);
 };
 
 const playResetAnimation = () => {
