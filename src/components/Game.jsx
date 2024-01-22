@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { shuffle, capitalize } from "../utils.js";
-import { fetchAndSetData, fetchGifData } from "../api.js";
+import { fetchCardData, fetchGifData } from "../api.js";
 import { playEndGameAnimation, playResetAnimation } from "../dom.js";
 import "../styles/Game.css";
 
@@ -150,16 +150,16 @@ const Game = () => {
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
-    fetchAndSetData(setApiData, signal);
+    fetchCardData(signal).then((data) => {
+      if (data) {
+        setApiData(data.memes);
+      }
+    });
 
     return () => {
       controller.abort();
     };
   }, []);
-
-  if (apiData === null) {
-    return;
-  }
 
   const changeCards = () => {
     shuffle(apiData);
@@ -243,16 +243,18 @@ const Game = () => {
           </button>
         </div>
       </div>
-      <div className="card-grid">
-        {indices.current.map((index) => (
-          <Card
-            key={apiData[index].id}
-            value={index}
-            obj={apiData[index]}
-            selectCard={selectCard}
-          ></Card>
-        ))}
-      </div>
+      {apiData !== null && (
+        <div className="card-grid">
+          {indices.current.map((index) => (
+            <Card
+              key={apiData[index].id}
+              value={index}
+              obj={apiData[index]}
+              selectCard={selectCard}
+            ></Card>
+          ))}
+        </div>
+      )}
       <EndDialog
         isOpen={isDialogOpen}
         result={latestGameResult.current}
